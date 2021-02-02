@@ -47,7 +47,7 @@ module InvoiceServices
     end
 
     def hash_bills(bills)
-      bills.reduce({}) do |accum_bill, bill|
+      bills.each_with_object({}) do |bill, accum_bill|
         emp_id = bill[:employee_id]
         if accum_bill[emp_id].nil?
           accum_bill[emp_id] = bill
@@ -55,7 +55,6 @@ module InvoiceServices
           accum_bill[emp_id][:bill_cost] = accum_bill[emp_id][:bill_cost] + bill[:bill_cost]
           accum_bill[emp_id][:number_of_hours] = accum_bill[emp_id][:number_of_hours] + bill[:number_of_hours]
         end
-        accum_bill
       end
     end
   end
