@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :api do
-    namespace :v1, default: {format: :json} do
+    namespace :v1 do
       resources :timesheets, only: [:index, :create, :update, :destroy]
       resource :invoice, only: [:create]
     end
