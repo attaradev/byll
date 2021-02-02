@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: billed_production
-  username: billed
-  password: <%= ENV['BILLED_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
