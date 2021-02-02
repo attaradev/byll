@@ -1,0 +1,43 @@
+# general
+AllCops:
+  Exclude:
+    - "db/schema.rb"
+    - "db/migrate/*.rb"
+    - ".bundle/**/*"
+    - "bin/**/*"
+    - "vendor/**/*"
+    - "**/config/**/*"
+  TargetRubyVersion: 2.6
+  SuggestExtensions: false
+
+  # Documention
+Documentation:
+  Enabled: false
+
+# metrics
+Metrics/LineLength:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+
+# style
+Style/SpaceAroundBlockParameters:
+  Enabled: true
+Style/SpaceAroundEqualsInParameterDefault:
+  Enabled: true
+Style/SpaceBeforeBlockBraces:
+  Enabled: true
+Style/SpaceInsideHashLiteralBraces:
+  Enabled: true
+Style/SpaceInsideStringInterpolation:
+  Enabled: false
+Style/EmptyLinesAroundBlockBody:
+  Enabled: true
+Style/EmptyLinesAroundClassBody:
+  Enabled: false
+Style/EmptyLinesAroundModuleBody:
+  Enabled: false
+Style/SpaceAroundOperators:
+  Enabled: true
+Style/BlockDelimiters:
+  Enabled: true
