@@ -11,5 +11,6 @@ class CreateTimesheets < ActiveRecord::Migration[6.1]
       t.timestamps
     end
     add_index :timesheets, :employee_id
+    add_index :timesheets, :company
   end
 end
