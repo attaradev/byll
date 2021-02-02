@@ -6,7 +6,7 @@ module Api
       before_action :set_timesheet, only: %i[show update destroy]
 
       def index
-        @timesheets = Timesheet.all 
+        @timesheets = Timesheet.all
         render json: @timesheets, status: :ok
       end
 
