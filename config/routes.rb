@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :timesheets, only: [:index, :create, :update, :destroy]
+      resources :timesheets, only: [:index, :create, :show, :update, :destroy]
       resource :invoice, only: [:create]
     end
   end
