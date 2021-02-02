@@ -18,7 +18,7 @@ module Api
       private
 
       def set_timesheets
-        @timesheets = Timesheet.all.select { |t| t[:company] == @company }
+        @timesheets = Timesheet.find_by(params[:company])
       end
 
       def set_company
