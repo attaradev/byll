@@ -29,6 +29,6 @@ class V1::RegistrationsController < Devise::RegistrationsController
   end
 
   def sign_up_params
-    { email: params[:email], password: params[:password], role: params[:role] }
+    { email: params[:email], password: params[:password], role: params[:role] ||= 'lawyer' }
   end
 end
