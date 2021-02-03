@@ -2,8 +2,7 @@
 
 module V1
   class InvoicesController < ApplicationController
-    before_action :set_company
-    before_action :set_timesheets
+    before_action :finance_team_only, :set_company, :set_timesheets
 
     def create
       @invoice = InvoiceServices::CreateInvoiceService.new({

@@ -9,6 +9,10 @@ class ApplicationController < ActionController::API
     head :unauthorized unless signed_in?
   end
 
+  def finance_team_only
+    head :unauthorized unless @current_user.finance_team?
+  end
+
   private
 
   def signed_in?
