@@ -16,11 +16,11 @@ class V1::SessionsController < Devise::RegistrationsController
 
   private
 
-  def sign_in_params
-    {email: params[:email], password: params[:password]}
-  end
-
   def sanitize_params
     devise_parameter_sanitizer.sanitize(:sign_in)
+  end
+
+  def sign_in_params
+    {email: params[:email], password: params[:password]}
   end
 end

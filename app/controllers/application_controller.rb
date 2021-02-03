@@ -25,6 +25,11 @@ class ApplicationController < ActionController::API
 
   private
 
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:role, :email, :password])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
+  end
+
   def process_token
     if request.headers['Authorization'].present?
       begin
@@ -38,10 +43,5 @@ class ApplicationController < ActionController::API
 
   def signed_in?
     @current_user_id.present?
-  end
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:role, :email, :password])
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
   end
 end

@@ -17,12 +17,13 @@ module V1
 
     private
 
-    def set_timesheets
-      @timesheets = Timesheet.where(company: @company)
-    end
 
     def set_company
       @company = params[:company]
+    end
+    
+    def set_timesheets
+      @timesheets = Timesheet.where(company: @company)
     end
   end
 end

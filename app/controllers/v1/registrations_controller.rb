@@ -22,11 +22,11 @@ class V1::RegistrationsController < Devise::RegistrationsController
     !user.nil?
   end
 
-  def sign_up_params
-    {email: params[:email], password: params[:password], role: params[:role]}
-  end
-
   def sanitize_params
     devise_parameter_sanitizer.sanitize(:sign_up)
+  end
+
+  def sign_up_params
+    {email: params[:email], password: params[:password], role: params[:role]}
   end
 end
