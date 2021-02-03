@@ -81,9 +81,7 @@ You can run the server by running the command below in the project directory
 
 ## How to run the test suite
 
-```shell
-  rspec
-```
+    $ rspec
 
 ## Services
 
