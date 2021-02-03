@@ -21,11 +21,11 @@ class V1::TimesheetsController < ApplicationController
   end
 
   def index
-    if finance_team?
-      @timesheets = Timesheet.all
-    else
-      @timesheets = Timesheet.select { |t| t.employee_id == current_user.id }
-    end
+    @timesheets = if finance_team?
+                    Timesheet.all
+                  else
+                    Timesheet.select { |t| t.employee_id == current_user.id }
+                  end
     render json: @timesheets
   end
 
@@ -45,14 +45,14 @@ class V1::TimesheetsController < ApplicationController
   private
 
   def authorize_access
-    head :unauthorized unless finance_team? or current_user.id == @timesheet.employee_id
+    head :unauthorized unless finance_team? || (current_user.id == @timesheet.employee_id)
   end
 
   def authorize_create
     byebug
-    head :unauthorized unless finance_team? or current_user.id == params[:employee_id]
+    head :unauthorized unless finance_team? || (current_user.id == params[:employee_id])
   end
-  
+
   def set_timesheet
     @timesheet = Timesheet.find(params[:id])
   end
@@ -61,4 +61,3 @@ class V1::TimesheetsController < ApplicationController
     params.permit(:employee_id, :billable_rate, :company, :date, :start_time, :end_time)
   end
 end
-

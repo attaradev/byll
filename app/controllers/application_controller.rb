@@ -19,15 +19,15 @@ class ApplicationController < ActionController::API
     current_user.role == 'finance_team'
   end
 
-  def finance_team! 
+  def finance_team!
     head :unauthorized unless finance_team?
   end
 
   private
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:role, :email, :password])
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[role email password])
+    devise_parameter_sanitizer.permit(:sign_in, keys: %i[email password])
   end
 
   def process_token

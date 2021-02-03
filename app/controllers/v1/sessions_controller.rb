@@ -2,7 +2,7 @@
 
 class V1::SessionsController < Devise::RegistrationsController
   before_action :sanitize_params
-  
+
   def create
     user = User.find_by(email: sign_in_params[:email])
 
@@ -21,6 +21,6 @@ class V1::SessionsController < Devise::RegistrationsController
   end
 
   def sign_in_params
-    {email: params[:email], password: params[:password]}
+    { email: params[:email], password: params[:password] }
   end
 end

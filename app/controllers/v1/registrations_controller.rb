@@ -3,7 +3,9 @@
 class V1::RegistrationsController < Devise::RegistrationsController
   before_action :sanitize_params
   def create
-    unless email_exists?
+    if email_exists?
+      render json: { errors: { email: 'email already taken' } }, status: :unprocessable_entity
+    else
       user = User.create(sign_up_params)
       if user.valid?
         token = user.generate_jwt
@@ -12,7 +14,6 @@ class V1::RegistrationsController < Devise::RegistrationsController
         render json: { errors: { 'email or password' => ['is invalid'] } }, status: :unprocessable_entity
       end
     end
-    render json: { errors: { email: 'email already taken' } }, status: :unprocessable_entity
   end
 
   private
@@ -27,6 +28,6 @@ class V1::RegistrationsController < Devise::RegistrationsController
   end
 
   def sign_up_params
-    {email: params[:email], password: params[:password], role: params[:role]}
+    { email: params[:email], password: params[:password], role: params[:role] }
   end
 end
