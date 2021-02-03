@@ -2,6 +2,7 @@
 
 class V1::RegistrationsController < Devise::RegistrationsController
   before_action :sanitize_params
+  
   def create
     if email_exists?
       render json: { errors: { email: 'email already taken' } }, status: :unprocessable_entity
