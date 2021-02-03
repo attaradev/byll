@@ -2,7 +2,7 @@
 
 ## Background
 
-Byll is an `Aplication Programming Interface (API)` of a sample billing system for a law firm in Ghana. To be as efficient as possible, the firm uses a
+Byll is an `Application Programming Interface (API)` of a sample billing system for a law firm in Ghana. To be as efficient as possible, the firm uses a
 billable rate system. This means every lawyer, depending on their grade has a billable rate and
 for any project they work on, must send in the total number of hours they’ve worked on so that
 the finance team can create invoices for clients to pay.
