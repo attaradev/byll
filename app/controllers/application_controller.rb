@@ -9,19 +9,17 @@ class ApplicationController < ActionController::API
     head :unauthorized unless signed_in?
   end
 
-  def finance_team_only
-    head :unauthorized unless @current_user.finance_team?
+  protected
+
+  def current_user
+    @current_user = User.find(@current_user_id)
+  end
+
+  def finance_team! 
+    head :unauthorized unless current_user.role == 'finance_team'
   end
 
   private
-
-  def signed_in?
-    @current_user_id.present?
-  end
-
-  def current_user
-    @current_user ||= super || User.find(@current_user_id)
-  end
 
   def process_token
     if request.headers['Authorization'].present?
@@ -32,6 +30,10 @@ class ApplicationController < ActionController::API
         head :unauthorized
       end
     end
+  end
+
+  def signed_in?
+    @current_user_id.present?
   end
 
   def configure_permitted_parameters

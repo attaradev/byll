@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class V1::TimesheetsController < ApplicationController
+  before_action :user
   before_action :set_timesheet, only: %i[show update destroy]
 
   def index
