@@ -15,8 +15,12 @@ class ApplicationController < ActionController::API
     @current_user = User.find(@current_user_id)
   end
 
+  def finance_team?
+    current_user.role == 'finance_team'
+  end
+
   def finance_team! 
-    head :unauthorized unless current_user.role == 'finance_team'
+    head :unauthorized unless finance_team?
   end
 
   private
