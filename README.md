@@ -73,13 +73,13 @@ This project is built with the Ruby on Rails Framework with the following stack:
 
     $ rails db:migrate
 
-## Running the server
+### Running the server
 
 You can run the server by running the command below in the project directory
 
     $ rails server
 
-## How to run the test suite
+### How to run the test suite
 
     $ rspec
 
